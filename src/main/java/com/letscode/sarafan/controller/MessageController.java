@@ -1,6 +1,7 @@
 package com.letscode.sarafan.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
 import com.letscode.sarafan.domain.Message;
 import com.letscode.sarafan.domain.Views;
 import com.letscode.sarafan.repo.MessageRepo;
@@ -14,7 +15,6 @@ import java.util.List;
 @RestController
 @RequestMapping("message")
 public class MessageController {
-
     private final MessageRepo messageRepo;
 
     @Autowired
@@ -51,7 +51,7 @@ public class MessageController {
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable ("id") Message message){
+    public void delete(@PathVariable("id") Message message) {
         messageRepo.delete(message);
     }
 }

@@ -3,6 +3,8 @@ HELP.md
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
+node_modules
+
 build.gradle
 gradle/
 gradlew
@@ -42,3 +44,5 @@ out/
 
 ### VS Code ###
 .vscode/
+
+yarn.lock
