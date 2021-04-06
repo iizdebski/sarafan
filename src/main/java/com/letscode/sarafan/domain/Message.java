@@ -2,16 +2,19 @@ package com.letscode.sarafan.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table
 @ToString(of = {"id", "text"})
 @EqualsAndHashCode(of = {"id"})
+@Data
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -25,22 +28,23 @@ public class Message {
     @JsonView(Views.FullMessage.class)
     private LocalDateTime creationDate;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     @JsonView(Views.FullMessage.class)
-    @Column(length = 1000)
+    private User author;
+
+    @OneToMany(mappedBy = "message", orphanRemoval = true)
+    @JsonView(Views.FullMessage.class)
+    private List<Comment> comments;
+
+    @JsonView(Views.FullMessage.class)
     private String link;
-
     @JsonView(Views.FullMessage.class)
-    @Column(length = 1000)
     private String linkTitle;
-
     @JsonView(Views.FullMessage.class)
-    @Column(length = 1000)
     private String linkDescription;
-
     @JsonView(Views.FullMessage.class)
-    @Column(length = 1000)
     private String linkCover;
-
 
     public Long getId() {
         return id;
@@ -64,6 +68,22 @@ public class Message {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
     public String getLink() {

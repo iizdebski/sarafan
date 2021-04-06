@@ -4,6 +4,7 @@
         label="New message"
         placeholder="Write something"
         v-model="text"
+        @keyup.enter="save"
     />
     <v-btn @click="save">
       Save
@@ -13,6 +14,7 @@
 
 <script>
 import { mapActions } from 'vuex'
+
 export default {
   props: ['messageAttr'],
   data() {
@@ -34,11 +36,13 @@ export default {
         id: this.id,
         text: this.text
       }
+
       if (this.id) {
         this.updateMessageAction(message)
       } else {
         this.addMessageAction(message)
       }
+
       this.text = ''
       this.id = ''
     }
@@ -47,4 +51,5 @@ export default {
 </script>
 
 <style>
+
 </style>
