@@ -25,6 +25,23 @@ public class Message {
     @JsonView(Views.FullMessage.class)
     private LocalDateTime creationDate;
 
+    @JsonView(Views.FullMessage.class)
+    @Column(length = 1000)
+    private String link;
+
+    @JsonView(Views.FullMessage.class)
+    @Column(length = 1000)
+    private String linkTitle;
+
+    @JsonView(Views.FullMessage.class)
+    @Column(length = 1000)
+    private String linkDescription;
+
+    @JsonView(Views.FullMessage.class)
+    @Column(length = 1000)
+    private String linkCover;
+
+
     public Long getId() {
         return id;
     }
@@ -47,5 +64,37 @@ public class Message {
 
     public void setCreationDate(LocalDateTime creationDate) {
         this.creationDate = creationDate;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getLinkTitle() {
+        return linkTitle;
+    }
+
+    public void setLinkTitle(String linkTitle) {
+        this.linkTitle = linkTitle;
+    }
+
+    public String getLinkDescription() {
+        return linkDescription;
+    }
+
+    public void setLinkDescription(String linkDescription) {
+        this.linkDescription = linkDescription;
+    }
+
+    public String getLinkCover() {
+        return linkCover;
+    }
+
+    public void setLinkCover(String linkCover) {
+        this.linkCover = linkCover;
     }
 }
