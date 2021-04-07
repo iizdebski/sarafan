@@ -1,7 +1,9 @@
 package com.letscode.sarafan.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.letscode.sarafan.domain.Comment;
 import com.letscode.sarafan.domain.User;
+import com.letscode.sarafan.domain.Views;
 import com.letscode.sarafan.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,6 +23,7 @@ public class CommentController {
     }
 
     @PostMapping
+    @JsonView(Views.FullComment.class)
     public Comment create(
             @RequestBody Comment comment,
             @AuthenticationPrincipal User user
