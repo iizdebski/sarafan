@@ -5,7 +5,7 @@
         <div class="title mb-3">User profile</div>
         <v-layout row justify-space-between>
           <v-flex class="px-1">
-            <v-img :scr="profile.userpic"></v-img>
+            <v-img :src="profile.userpic"></v-img>
           </v-flex>
           <v-flex class="px-1">
             <v-layout column>
@@ -31,7 +31,6 @@
 
 <script>
 import profileApi from 'api/profile'
-
 export default {
   name: 'Profile',
   data() {
@@ -63,10 +62,8 @@ export default {
     },
     async updateProfile() {
       const id = this.$route.params.id || this.$store.state.profile.id
-
       const data = await profileApi.get(id)
       this.profile = await data.json()
-
       this.$forceUpdate()
     }
   },
@@ -77,7 +74,7 @@ export default {
 </script>
 
 <style scoped>
-imp {
+img {
   max-width: 100%;
   height: auto;
 }

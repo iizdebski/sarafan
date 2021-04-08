@@ -1,6 +1,7 @@
 package com.letscode.sarafan.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
 import com.letscode.sarafan.domain.Message;
 import com.letscode.sarafan.domain.User;
 import com.letscode.sarafan.domain.Views;
@@ -47,7 +48,7 @@ public class MessageController {
             @RequestBody Message message,
             @AuthenticationPrincipal User user
     ) throws IOException {
-       return messageService.create(message, user);
+        return messageService.create(message, user);
     }
 
     @PutMapping("{id}")

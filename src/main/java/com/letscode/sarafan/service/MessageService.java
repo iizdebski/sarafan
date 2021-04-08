@@ -1,5 +1,6 @@
 package com.letscode.sarafan.service;
 
+
 import com.letscode.sarafan.domain.Message;
 import com.letscode.sarafan.domain.User;
 import com.letscode.sarafan.domain.UserSubscription;
@@ -27,12 +28,10 @@ import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Service
 public class MessageService {
-
     private static String URL_PATTERN = "https?:\\/\\/?[\\w\\d\\._\\-%\\/\\?=&#]+";
     private static String IMAGE_PATTERN = "\\.(jpeg|jpg|gif|png)$";
 
@@ -44,14 +43,16 @@ public class MessageService {
     private final BiConsumer<EventType, Message> wsSender;
 
     @Autowired
-    public MessageService(MessageRepo messageRepo,
-                          UserSubscriptionRepo userSubscriptionRepo,
-                          WsSender wsSender
+    public MessageService(
+            MessageRepo messageRepo,
+            UserSubscriptionRepo userSubscriptionRepo,
+            WsSender wsSender
     ) {
         this.messageRepo = messageRepo;
         this.userSubscriptionRepo = userSubscriptionRepo;
         this.wsSender = wsSender.getSender(ObjectType.MESSAGE, Views.IdName.class);
     }
+
 
     private void fillMeta(Message message) throws IOException {
         String text = message.getText();
@@ -78,9 +79,10 @@ public class MessageService {
 
     private MetaDto getMeta(String url) throws IOException {
         Document doc = Jsoup.connect(url).get();
-        Elements title = doc.select("meta[name$=title], meta[property$=title]");
-        Elements description = doc.select("meta[name$=description], meta[property$=title]");
-        Elements cover = doc.select("meta[name$=title], meta[property$=image]");
+
+        Elements title = doc.select("meta[name$=title],meta[property$=title]");
+        Elements description = doc.select("meta[name$=description],meta[property$=description]");
+        Elements cover = doc.select("meta[name$=image],meta[property$=image]");
 
         return new MetaDto(
                 getContent(title.first()),

@@ -1,9 +1,6 @@
 package com.letscode.sarafan.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -18,8 +15,8 @@ import java.util.List;
 @EqualsAndHashCode(of = {"id"})
 @Data
 @JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id"
+        property = "id",
+        generator = ObjectIdGenerators.PropertyGenerator.class
 )
 public class Message {
     @Id
@@ -51,6 +48,4 @@ public class Message {
     private String linkDescription;
     @JsonView(Views.FullMessage.class)
     private String linkCover;
-
-
 }

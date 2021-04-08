@@ -1,6 +1,7 @@
 package com.letscode.sarafan.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
 import com.letscode.sarafan.domain.User;
 import com.letscode.sarafan.domain.Views;
 import com.letscode.sarafan.service.ProfileService;
@@ -11,17 +12,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("profile")
 public class ProfileController {
-        private final ProfileService profileService;
+    private final ProfileService profileService;
 
-        @Autowired
-        public ProfileController(ProfileService profileService) {
-            this.profileService = profileService;
+    @Autowired
+    public ProfileController(ProfileService profileService) {
+        this.profileService = profileService;
     }
 
     @GetMapping("{id}")
     @JsonView(Views.FullProfile.class)
     public User get(@PathVariable("id") User user) {
-            return user;
+        return user;
     }
 
     @PostMapping("change-subscription/{channelId}")

@@ -47,6 +47,4 @@ public class User {
             cascade = CascadeType.ALL
     )
     private Set<UserSubscription> subscribers = new HashSet<>();
-
-
 }

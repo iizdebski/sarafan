@@ -19,18 +19,18 @@ public class ProfileService {
     }
 
     public User changeSubscription(User channel, User subscriber) {
-        List<UserSubscription> subscriptions = channel.getSubscribers()
+        List<UserSubscription> subcriptions = channel.getSubscribers()
                 .stream()
                 .filter(subscription ->
                         subscription.getSubscriber().equals(subscriber)
                 )
                 .collect(Collectors.toList());
 
-        if (subscriptions.isEmpty()) {
+        if (subcriptions.isEmpty()) {
             UserSubscription subscription = new UserSubscription(channel, subscriber);
             channel.getSubscribers().add(subscription);
         } else {
-            channel.getSubscribers().removeAll(subscriptions);
+            channel.getSubscribers().removeAll(subcriptions);
         }
 
         return userDetailsRepo.save(channel);

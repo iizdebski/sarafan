@@ -68,7 +68,7 @@ export default new Vuex.Store({
 
             state.messages = Object.values(targetMessages)
         },
-        updateTotalPagesMutation (state, totalPages) {
+        updateTotalPagesMutation(state, totalPages) {
             state.totalPages = totalPages
         },
         updateCurrentPageMutation(state, currentPage) {

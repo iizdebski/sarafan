@@ -11,5 +11,5 @@ import java.util.List;
 
 public interface MessageRepo extends JpaRepository<Message, Long> {
     @EntityGraph(attributePaths = { "comments" })
-    Page<Message> findByAuthorIn(List<User> user, Pageable pageable);
+    Page<Message> findByAuthorIn(List<User> users, Pageable pageable);
 }

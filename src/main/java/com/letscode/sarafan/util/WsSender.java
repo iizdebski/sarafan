@@ -3,6 +3,7 @@ package com.letscode.sarafan.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+
 import com.letscode.sarafan.dto.EventType;
 import com.letscode.sarafan.dto.ObjectType;
 import com.letscode.sarafan.dto.WsEventDto;
@@ -34,6 +35,7 @@ public class WsSender {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
+
             template.convertAndSend(
                     "/topic/activity",
                     new WsEventDto(objectType, eventType, value)

@@ -1,8 +1,8 @@
 import Vue from 'vue'
 
-const profile = Vue.resource('/message{/id}')
+const profile = Vue.resource('/profile{/id}')
 
 export default {
     get: id => profile.get({id}),
-    ChangeSubscription: channelId => Vue.http.post(`/profile/change-subscription/${channelId}`)
+    changeSubscription: channelId => Vue.http.post(`/profile/change-subscription/${channelId}`)
 }

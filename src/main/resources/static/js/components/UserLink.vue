@@ -20,13 +20,13 @@
     >
       <v-icon dark>account_circle</v-icon>
     </v-avatar>
-  <span>{{ userName }}</span>
+    <span>{{ userName }}</span>
   </router-link>
 </template>
 
 <script>
 export default {
-  name: "UserLink",
+  name: 'UserLink',
   props: ['user', 'size'],
   computed: {
     userName() {
@@ -37,5 +37,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
