@@ -3,11 +3,14 @@ package com.letscode.sarafan.controller;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import com.letscode.sarafan.domain.User;
+import com.letscode.sarafan.domain.UserSubscription;
 import com.letscode.sarafan.domain.Views;
 import com.letscode.sarafan.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("profile")
@@ -36,5 +39,22 @@ public class ProfileController {
         } else {
             return profileService.changeSubscription(channel, subscriber);
         }
+    }
+
+    @GetMapping("get-subscribers/{channelId}")
+    @JsonView(Views.IdName.class)
+    public List<UserSubscription> subscribers(
+            @PathVariable("channelId") User channel
+    ) {
+        return profileService.getSubscribers(channel);
+    }
+
+    @PostMapping("change-status/{subscriberId}")
+    @JsonView(Views.IdName.class)
+    public UserSubscription changeSubscriptionStatus(
+            @AuthenticationPrincipal User channel,
+            @PathVariable("subscriberId") User subscriber
+    ) {
+        return profileService.changeSubscriptionStatus(channel, subscriber);
     }
 }
