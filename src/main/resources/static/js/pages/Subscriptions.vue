@@ -3,7 +3,7 @@
     <v-layout justify-space-around>
       <v-list>
         <v-list-tile
-            v-for="item in subscribers"
+            v-for="item in subscriptions"
         >
           <user-link
               :user="item.subscriber"
@@ -23,10 +23,9 @@
 
 <script>
 import profileApi from 'api/profile'
-import UserLink from "components/UserLink.vue";
-
+import UserLink from 'components/UserLink.vue'
 export default {
-  name: "Subscriptions",
+  name: 'Subscriptions',
   components: {UserLink},
   data() {
     return {
@@ -36,19 +35,17 @@ export default {
   methods: {
     async changeSubscriptionStatus(subscriberId) {
       await profileApi.changeSubscriptionStatus(subscriberId)
-
-       const subscriptionIndex = this.subscriptions.findIndex(item =>
-           item.subscriber.id === subscriberId
-       )
+      const subscriptionIndex = this.subscriptions.findIndex(item =>
+          item.subscriber.id === subscriberId
+      )
       const subscription = this.subscriptions[subscriptionIndex]
-
       this.subscriptions = [
-          ...this.subscriptions.slice(0, subscriptionIndex),
+        ...this.subscriptions.slice(0, subscriptionIndex),
         {
           ...subscription,
           active: !subscription.active
         },
-          ...this.subscriptions.slice(subscriptionIndex + 1)
+        ...this.subscriptions.slice(subscriptionIndex + 1)
       ]
     }
   },
@@ -60,5 +57,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

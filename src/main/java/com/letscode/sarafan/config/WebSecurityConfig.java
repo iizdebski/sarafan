@@ -1,5 +1,6 @@
 package com.letscode.sarafan.config;
 
+
 import com.letscode.sarafan.domain.User;
 import com.letscode.sarafan.repo.UserDetailsRepo;
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso;

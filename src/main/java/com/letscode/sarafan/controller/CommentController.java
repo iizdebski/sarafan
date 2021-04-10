@@ -1,6 +1,7 @@
 package com.letscode.sarafan.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
+
 import com.letscode.sarafan.domain.Comment;
 import com.letscode.sarafan.domain.User;
 import com.letscode.sarafan.domain.Views;
