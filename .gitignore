@@ -1,18 +1,6 @@
-HELP.md
 .gradle
-build/
+/build/
 !gradle/wrapper/gradle-wrapper.jar
-
-node_modules
-
-build.gradle
-gradle/
-gradlew
-gradlew.bat
-settings.gradle
-
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### STS ###
 .apt_generated
@@ -22,27 +10,21 @@ settings.gradle
 .settings
 .springBeans
 .sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
 *.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+/out/
 
 ### NetBeans ###
 /nbproject/private/
+/build/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
-.vscode/
-
-yarn.lock
+node_modules
+/src/main/resources/static/js/
