@@ -1,9 +1,9 @@
-# Social network - Sarafan
+# Social network - Sarafan - https://sarafan-ls.herokuapp.com/auth
 
 ## ***Technologies used:***
 
 * **Spring Boot Rest Application + Vue.js**
-* **PostgreSQL*
+* **PostgreSQL**
 * **Jackson**
 * **oAuth2**
 * **Spring Security**
