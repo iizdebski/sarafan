@@ -1,6 +1,6 @@
 # Social network - Sarafan - https://sarafan-ls.herokuapp.com/auth
 
-## ***Technologies used:***
+## ***Technologies:***
 
 * **Spring Boot Rest Application + Vue.js**
 * **PostgreSQL**
